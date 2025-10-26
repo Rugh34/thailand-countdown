@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ספירה לאחור לתאילנד 🇹🇭</title>
+    
+    <!-- Open Graph / Facebook / WhatsApp / Telegram -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="טסים לתאילנד! ✈️🏝️">
+    <meta property="og:description" content="ספירה לאחור מרגשת לטיול שלנו לתאילנד - 7 בינואר 2026!">
+    <meta property="og:image" content="https://rugh34.github.io/thailand-countdown/preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://rugh34.github.io/thailand-countdown/">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="טסים לתאילנד! ✈️🏝️">
+    <meta property="twitter:description" content="ספירה לאחור מרגשת לטיול שלנו לתאילנד - 7 בינואר 2026!">
+    <meta property="twitter:image" content="https://[USERNAME].github.io/thailand-countdown/preview.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 30px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #2d3748;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .trip-info {
+            color: #718096;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .time-unit {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            padding: 20px 15px;
+            width: 180px;
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .time-unit:hover {
+            transform: translateY(-5px);
+        }
+
+        .time-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            line-height: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .time-label {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .emoji {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .time-unit {
+                width: 140px;
+                padding: 7px 12px;
+            }
+
+            .time-value {
+                font-size: 1.3em;
+            }
+
+            .time-label {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji">✈️🏝️🇹🇭</div>
+        <h1>טסים לתאילנד!</h1>
+        <p class="trip-info">הספירה לאחור מתחילה...</p>
+        
+        <div class="countdown">
+            <div class="time-unit">
+                <div class="time-value" id="days">00</div>
+                <div class="time-label">ימים</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" id="hours">00</div>
+                <div class="time-label">שעות</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" id="minutes">00</div>
+                <div class="time-label">דקות</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" id="seconds">00</div>
+                <div class="time-label">שניות</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // תאריך הטיסה: 7 בינואר 2026 בשעה 18:10 שעון ישראל (UTC+2)
+        const targetDate = new Date('2026-01-07T18:10:00+02:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.querySelector('.countdown').innerHTML = '<h2 style="color: #f5576c; font-size: 2.5em;">🎉 בואו נעוף! 🎉</h2>';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        // עדכון מיידי
+        updateCountdown();
+
+        // עדכון כל שנייה
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
